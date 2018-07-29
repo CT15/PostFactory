@@ -6,6 +6,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+  authToken: any;
+  user: any;
 
   constructor(private http: Http) { }
 
@@ -14,5 +16,25 @@ export class AuthService {
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/register', user, { headers: headers })
                .pipe(map(res => res.json()));
+  }
+
+  authenticateUser(user) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers })
+               .pipe(map(res => res.json()));
+  }
+
+  storeUserData(token, user) {
+    localStorage.setItem('id_token', token); // Angular JWT path finds id_token
+    localStorage.setItem('user', JSON.stringify(user)); // Local storage can only store string
+    this.authToken = token;
+    this.user = user;
+  }
+
+  logout() {
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
   }
 }
