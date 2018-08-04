@@ -6,6 +6,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 
 const users = require('./routes/users');
+const posts = require('./routes/posts');
 
 const config = require('./config/database');
 
@@ -29,6 +30,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users', users);
+app.use('/posts', posts);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
