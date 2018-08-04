@@ -2,11 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AuthGuard } from './guards/auth.guard';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -15,10 +13,12 @@ import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { PostinputComponent } from './components/postinput/postinput.component';
 
+import { AuthGuard } from './guards/auth.guard';
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
-import { PostinputComponent } from './components/postinput/postinput.component';
+import { PostService } from './services/post.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -56,7 +56,12 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [
+    ValidateService, 
+    AuthService, 
+    AuthGuard, 
+    PostService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

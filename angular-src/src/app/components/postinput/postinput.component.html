@@ -1,10 +1,10 @@
-<form>
+<form (submit)="post()">
 	<div class="form-group">
 		<h5>Anything interesting to share?</h5>
-		<textarea class="form-control" rows="5"></textarea>
+		<textarea class="form-control" rows="5" [(ngModel)]="content" name="content"></textarea>
 	</div>
 	<div class="checkbox">
-		<h5><input type="checkbox"> Anonymous</h5>
+		<h5><input type="checkbox" [(ngModel)]="isAnonymous" name="isAnonymous">Anonymous</h5>
 	</div>
-	<button type="submit" class="btn btn-primary">Post</button>
+	<button [disabled]="isButtonDisabled()" type="submit" class="btn btn-primary">Post</button>
 </form>
