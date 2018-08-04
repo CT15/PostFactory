@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
+import { PostinputComponent } from './components/postinput/postinput.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,7 +40,8 @@ export function tokenGetter() {
     RegisterComponent,
     DashboardComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    PostinputComponent
   ],
   imports: [
     BrowserModule,
