@@ -21,7 +21,10 @@ This application allows its user to:
   * npm
   * Angular CLI
   * MongoDB
-2. Clone the repository (using HTTPS: git clone https://github.com/CT15/PostFactory.git)
+2. Clone the repository. Using HTTPS: 
+  ```shell
+  $ git clone https://github.com/CT15/PostFactory.git
+  ```
 3. Open the terminal and run the daemon process to instantiate Mongodb service
   ```shell
   $ mongod
@@ -29,10 +32,7 @@ This application allows its user to:
 4. Open another tab of the terminal to run the node application
   ```shell
   $ cd PostFactory
-  $ nodemon
-  ```
-* If you do not have **nodemon** installed, you can also run
-  ```shell
-  $ node app.js
+  $ nodemon     # or
+  $ node app.js # if you do not have nodemon installed
   ```
 5. Open your browser on http://localhost:3000/
