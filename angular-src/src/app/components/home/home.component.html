@@ -2,8 +2,9 @@
   <h1>Post Factory</h1>
   <p>A social networking application made for sharing only texts</p>
   <div>
-    <button type="button" class="btn btn-primary" routerLink="/register">Register</button>
-    <button type="button" class="btn btn-secondary" routerLink="/login">Login</button>
+    <button *ngIf="!authService.loggedIn()" type="button" class="btn btn-primary" routerLink="/register">Register</button>
+    <button *ngIf="!authService.loggedIn()" type="button" class="btn btn-secondary" routerLink="/login">Login</button>
+    <button *ngIf="authService.loggedIn()" type="button" class="btn btn-primary" (click)="onLogoutClick()">Logout</button>
   </div>
 </div>
 

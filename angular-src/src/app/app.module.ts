@@ -14,11 +14,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { PostinputComponent } from './components/postinput/postinput.component';
+import { PostsareaComponent } from './components/postsarea/postsarea.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { PostService } from './services/post.service';
+import { PostsAreaService } from './components/postsarea/postsarea.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,7 +43,8 @@ export function tokenGetter() {
     DashboardComponent,
     ProfileComponent,
     HomeComponent,
-    PostinputComponent
+    PostinputComponent,
+    PostsareaComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ export function tokenGetter() {
     ValidateService, 
     AuthService, 
     AuthGuard, 
-    PostService
+    PostService,
+    PostsAreaService
   ],
   bootstrap: [AppComponent]
 })

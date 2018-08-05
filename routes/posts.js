@@ -5,7 +5,7 @@ const Post = require('../models/post');
 
 // Create a new post
 router.post('/new', (req, res) => {
-    let username = "";
+    let username = "Anonymous";
 
     if(!req.body.isAnonymous) { username = req.body.username; }
 

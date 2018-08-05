@@ -26,6 +26,11 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
+    if(this.name == 'Anonymous') {
+      this.flashMessage.show('You are not allowed to use "Anonymous" as username', { cssClass: 'alert-danger', timeout: 2000 });
+      return false;
+    }
+
     const user = {
       name: this.name,
       username: this.username,

@@ -1,0 +1,7 @@
+<h6 *ngIf="posts.length < 1">No posts to display</h6>
+<div *ngFor="let post of posts" class="shadow-none p-3 mb-5 bg-light rounded">
+  <h5>{{ post.username }}</h5>
+  <h6>{{ post.content }}</h6>
+  <p class="font-italic">{{ post.datetime }}</p>
+  <hr />
+</div>

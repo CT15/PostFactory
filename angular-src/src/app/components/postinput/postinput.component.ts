@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { ValidateService } from '../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { PostsAreaService } from '../postsarea/postsarea.service';
 
 @Component({
   selector: 'app-postinput',
@@ -16,7 +17,8 @@ export class PostinputComponent implements OnInit {
   constructor(
     private postService: PostService,
     private validateService: ValidateService,
-    private flashMessage: FlashMessagesService
+    private flashMessage: FlashMessagesService,
+    private postsAreaService: PostsAreaService
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,9 @@ export class PostinputComponent implements OnInit {
     this.postService.post(newPost).subscribe((data) => {
       if(data.success) {
         this.flashMessage.show(data.msg, { cssClass: 'alert-success', timeout: 2000 });
+        this.content = null;
+        this.isAnonymous = null;
+        this.postsAreaService.notifyNewPost();
       } else {
         this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 2000 });
       }

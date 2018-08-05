@@ -16,6 +16,9 @@ export class PostService {
                     .pipe(map(res => res.json()));
   }
 
-  
-
+  retrievePosts() {
+    let headers = new Headers();
+    return this.http.get('http://localhost:3000/posts/', { headers: headers })
+                    .pipe(map(res => res.json()));
+  }
 }
