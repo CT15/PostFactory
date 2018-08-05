@@ -31,7 +31,8 @@ This application allows its user to:
   $ cd PostFactory
   $ nodemon
   ```
-  If you do not have **nodemon** installed, you can also run
+* If you do not have **nodemon** installed, you can also run
   ```shell
   $ node app.js
   ```
+5. Open your browser on http://localhost:3000/
