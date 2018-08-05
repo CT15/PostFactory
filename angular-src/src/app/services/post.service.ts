@@ -21,4 +21,10 @@ export class PostService {
     return this.http.get('http://localhost:3000/posts/', { headers: headers })
                     .pipe(map(res => res.json()));
   }
+
+  increaseLike(postId) {
+    let headers = new Headers();
+    return this.http.post('http://localhost:3000/posts/id/' + postId + '/like', null, { headers: headers })
+                    .pipe(map(res => res.json()));
+  }
 }

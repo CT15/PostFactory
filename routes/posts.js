@@ -38,10 +38,19 @@ router.get('/', (req, res) => {
 router.get('/user/:username', (req, res) => {
     Post.getPostsByUsername(req.params.username, (err, posts) => {
         if(err) {
-            return res.json({ success: false, msg: 'Unable to retrieve posts' })
+            return res.json({ success: false, msg: 'Unable to retrieve posts' });
         }
         res.json({ success: true, posts: posts });
     });
+});
+
+router.post('/id/:id/like', (req, res) => {
+    Post.increaseLikeById(req.params.id, (err) => {
+        if(err) {
+            return res.json({ success: false, msg: 'Unable to increase likes' });
+        }
+        return res.json({ success: true, msg: 'Likes count increased' });
+    })
 });
 
 module.exports = router;

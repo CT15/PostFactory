@@ -2,6 +2,8 @@
 <div *ngFor="let post of posts" class="shadow-none p-3 mb-5 bg-light rounded">
   <h5>{{ post.username }}</h5>
   <h6>{{ post.content }}</h6>
+  <h6>Likes: {{ post.likes }}</h6>
   <p class="font-italic">{{ post.datetime }}</p>
+  <button class="btn btn-secondary" (click)="increaseLike(post)">Like</button>
   <hr />
 </div>

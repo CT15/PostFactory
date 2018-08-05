@@ -34,3 +34,7 @@ module.exports.getAllPosts = function(callback) {
 module.exports.getPostsByUsername = function(username, callback) {
     Post.find({ username: username }, callback);
 }
+
+module.exports.increaseLikeById = function(id, callback) {
+    Post.update({ _id: id }, { $inc: { likes: 1 }}, callback);
+}

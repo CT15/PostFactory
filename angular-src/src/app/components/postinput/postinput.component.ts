@@ -3,6 +3,7 @@ import { PostService } from '../../services/post.service';
 import { ValidateService } from '../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { PostsAreaService } from '../postsarea/postsarea.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-postinput',
@@ -18,7 +19,8 @@ export class PostinputComponent implements OnInit {
     private postService: PostService,
     private validateService: ValidateService,
     private flashMessage: FlashMessagesService,
-    private postsAreaService: PostsAreaService
+    private postsAreaService: PostsAreaService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -30,7 +32,7 @@ export class PostinputComponent implements OnInit {
 
   post() {
     let newPost = {
-      username: "Someone",  // TODO
+      username: JSON.parse(localStorage.getItem('user')).username,
       isAnonymous: this.isAnonymous,
       content: this.content
     }
